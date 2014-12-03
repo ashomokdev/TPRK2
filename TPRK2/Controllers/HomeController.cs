@@ -21,7 +21,7 @@ namespace TPRK2.Controllers
             return View();
         }
 
-        [HttpPost]
+        //[HttpPost]
         public ActionResult CreateTable(int x)
         {
            Table t = new Table();

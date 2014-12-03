@@ -21,9 +21,9 @@
 
         <div class="form-group">
             <label for="inputx">x:</label>
-                @using (Html.BeginForm("CreateTable", "Home", FormMethod.Post, new { id = "Form Name" }))
+                @using (Html.BeginForm("CreateTable", "Home", FormMethod.Post, new { id = "form" }))
                 { 
-                <form class="form-inline" role="form">
+                <form class="form-inline" role="form" id="form">
 
                     <div class="form-group" id="inputxclass">
                         <label class="control-label sr-only" for="inputx">Hidden label</label>

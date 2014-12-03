@@ -20,12 +20,17 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#buttonPlay").click(function (event) {
         event.preventDefault();
-        var form = $(this);
+        var form = $("#form");
+        //$.ajax({
+        //    url: '/Home/CreateTable',
+        var _url = form.attr('action');
+        var _data = form.serialize();
         $.ajax({
-            url: form.attr('action'),
+            url: _url,
             type: "POST",
-            data: form.serialize(),
-            success: function (data) {
+            data: _data,
+            success: function (data)
+            {
                 alert(data);
             
 
