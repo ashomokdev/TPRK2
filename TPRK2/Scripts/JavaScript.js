@@ -1,38 +1,4 @@
-﻿//$(document).ready(function () {
-//    $("#buttonPlay").click(function () {
-//        var val;
-//        var val2 = ($('#inputx').val());
-
-//        if (($('#inputx').val().length > 0))
-//        {
-//            val = $('#inputx').val();
-//        }
-        
-//        else if (($('#inputxOk').val().length > 0)) {
-//            val = $('#inputxOk').val();
-//        }
-
-//        else if (($('#inputxError').val().length > 0)) {
-//            val = $('#inputxError').val();
-//        }
-
-//        $('#inputx').hide();
-//        $('#inputxOk').hide();
-//        $('#inputxError').hide();
-
-//        if (isNumeric(val)) {
-//            $('#inputxOk').show();
-//            $('#inputxOk').text = $('#inputx').text;
-
-//        }
-//        else {
-//            $('#inputxError').show();
-//            $('#inputxError').text = $('#inputx').text;
-//        }
-//    });
-//});
-
-function isNumeric(n) {
+﻿function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
@@ -44,10 +10,35 @@ $(document).ready(function () {
             $("#inputxicon").attr("class", "glyphicon glyphicon-ok form-control-feedback");
 
         }
-        else
-        {
+        else {
             $("#inputxclass").attr("class", "form-group has-error has-feedback");
             $("#inputxicon").attr("class", "glyphicon glyphicon-remove form-control-feedback");
         }
+    });
+});
+
+$(document).ready(function () {
+    $("#buttonPlay").click(function (event) {
+        event.preventDefault();
+        var form = $(this);
+        $.ajax({
+            url: form.attr('action'),
+            type: "POST",
+            data: form.serialize(),
+            success: function (data) {
+                alert(data);
+            
+
+                //$("#FormContainer").html(data);
+                //$.validator.unobtrusive.parse("form");
+            },
+            //error: function (jqXhr, textStatus, errorThrown) {
+            //    alert("Error '" + jqXhr.status + "' (textStatus: '" + textStatus + "', errorThrown: '" + errorThrown + "')");
+            //},
+            //complete: function () {
+            //    $("#ProgressDialog").dialog("close");
+            //}
+        });
+
     });
 });

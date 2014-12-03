@@ -24,7 +24,8 @@ namespace TPRK2.Controllers
         [HttpPost]
         public ActionResult CreateTable(int x)
         {
-            Table t = new Table(x);
+           Table t = new Table();
+           t.x = x;
            // ViewBag.Table = t;
             
             return View(t);

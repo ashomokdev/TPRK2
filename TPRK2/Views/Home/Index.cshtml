@@ -1,4 +1,6 @@
-﻿@{
+﻿@model TPRK2.Models.Table
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -16,37 +18,47 @@
 
 <div class="container">
     <div class="col-md-6 col-md-offset-3 panel panel-default">
+
         <div class="form-group">
             <label for="inputx">x:</label>
+                @using (Html.BeginForm("CreateTable", "Home", FormMethod.Post, new { id = "Form Name" }))
+                { 
+                <form class="form-inline" role="form">
 
-            <form class="form-inline" role="form">
-                <div class="form-group" id="inputxclass">
-                    <label class="control-label sr-only" for="inputx">Hidden label</label>
-                    <input type="text" class="form-control" id="inputx" aria-describedby="inputSuccessStatus">
-                    <span aria-hidden="true" id="inputxicon"></span>
-                    <span id="inputSuccessStatus" class="sr-only">(success)</span>
-                </div>
-                <button id="buttonPlay" type="button" class="btn btn-primary">Грати</button>
-            </form>
+                    <div class="form-group" id="inputxclass">
+                        <label class="control-label sr-only" for="inputx">Hidden label</label>
+
+                        @Html.EditorFor(model => model.x, new { htmlAttributes = new { @class = "form-control", @id = "inputx", @type = "text" } })
+
+                        @*<input type="text" class="form-control" id="inputx" aria-describedby="inputSuccessStatus">*@
+                        <span aria-hidden="true" id="inputxicon"></span>
+                        <span id="inputSuccessStatus" class="sr-only">(success)</span>
+                    </div>
+
+                    <button type="submit" value="CreateTable" id="buttonPlay" class="btn btn-primary">Грати</button>
+
+                    <label id="testlabel">@Html.DisplayTextFor(model => model.x)</label>
+
+                </form>
+            }
         </div>
-        
-        @using (Html.BeginForm("CreateTable", "Home", FormMethod.Post, new { id = "table" }))
-        {
-            <form role="form">
-                <table class="table table-striped">
-                    <tr>
-                        <th>x</th>
-                        <th>Значення в. в. Y</th>
-                        <th>Виграш</th>
-                    </tr>
-                    <tr>
-                        <td>Eve</td>
-                        <td>Jackson</td>
-                        <td>94</td>
-                    </tr>
-                </table>
-            </form>
-        }
+
+
+        <form role="form">
+            <table class="table table-striped">
+                <tr>
+                    <th>x</th>
+                    <th>Значення в. в. Y</th>
+                    <th>Виграш</th>
+                </tr>
+                <tr>
+                    <td>Eve</td>
+                    <td>Jackson</td>
+                    <td>94</td>
+                </tr>
+            </table>
+        </form>
+
     </div>
 </div>
 
